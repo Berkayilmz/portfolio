@@ -11,12 +11,15 @@ import {
   Icon,
   SimpleGrid,
   Button,
+  Flex,
 } from "@chakra-ui/react";
 import { FaLinkedin, FaGithub, FaInstagram, FaEnvelope, FaReact } from "react-icons/fa";
 import { SiFirebase, SiMongodb, SiSelenium } from "react-icons/si";
 import ProgressComponent from "../components/Progress/ProgressComponent";
 import profile from "../assets/profile.png";
 import { useLanguage } from "../context/LanguageContext"; // Dil context hook
+import { image } from "framer-motion/client";
+import projectImage from '../assets/phone.png'
 
 const data = {
   tr: {
@@ -26,12 +29,14 @@ const data = {
         description:
           "WeatherWay, iki şehir arasında rota oluşturup güzergah üzerindeki saatlik hava durumunu analiz eden bir mobil uygulamadır.",
         link: "https://github.com/Berkayilmz/project1",
+        image: projectImage
       },
       {
         title: "Secretum",
         description:
           "Kullanıcıların günlük tutmasını, her gününü bir emoji ile ifade etmesini ve görsel yükleyerek anılarını daha anlamlı hale getirmesini sağlayan bir mobil uygulamadır.",
         link: "https://github.com/Berkayilmz/project2",
+        image: projectImage
       },
     ],
     educationData: [
@@ -40,12 +45,12 @@ const data = {
     ],
     skillsData: [
       { label: "React", value: "80%" },
-      { label: "React Native", value: "75%" },
+      { label: "React Native", value: "80%" },
       { label: "Node.js", value: "80%" },
       { label: "Firebase", value: "70%" },
       { label: "MongoDB", value: "65%" },
-      { label: "Python (Selenium)", value: "50%" },
-      { label: "Network (Switch konfigürasyonu, ARP, vs.)", value: "Orta Seviye" },
+      { label: "Network", value: "40%" },
+      { label: "Python (Selenium)", value: "30%" },
     ],
     aboutTitle: "Hakkımda",
     aboutTexts: [
@@ -66,12 +71,14 @@ const data = {
         description:
           "WeatherWay is a mobile app that creates routes between two cities and analyzes hourly weather conditions along the route.",
         link: "https://github.com/Berkayilmz/project1",
+        image: projectImage
       },
       {
         title: "Secretum",
         description:
           "Secretum is a mobile app that allows users to keep daily journals, express each day with an emoji, and upload images to make memories more meaningful.",
         link: "https://github.com/Berkayilmz/project2",
+        image: projectImage
       },
     ],
     educationData: [
@@ -80,12 +87,12 @@ const data = {
     ],
     skillsData: [
       { label: "React", value: "80%" },
-      { label: "React Native", value: "75%" },
+      { label: "React Native", value: "80%" },
       { label: "Node.js", value: "80%" },
       { label: "Firebase", value: "70%" },
       { label: "MongoDB", value: "65%" },
-      { label: "Python (Selenium)", value: "50%" },
-      { label: "Network (Switch configuration, ARP, etc.)", value: "Intermediate" },
+      { label: "Network", value: "40%" },
+      { label: "Python (Selenium)", value: "30%" },
     ],
     aboutTitle: "About Me",
     aboutTexts: [
@@ -124,12 +131,6 @@ const HomePage = () => {
       bg="transparent"
       color="white"
     >
-      {/* Dil Değiştirici Buton */}
-      <Box position="fixed" top={4} right={4} zIndex={1000}>
-        <Button onClick={toggleLanguage} colorScheme="cyan" size="sm">
-          {language === "tr" ? "EN" : "TR"}
-        </Button>
-      </Box>
 
       {/* Section 1: Profil ve Hakkımda */}
       <Box
@@ -249,15 +250,13 @@ const HomePage = () => {
         color="white"
         overflowY="auto"
       >
-        <Heading size="xl" mb={6} color="cyan.400" textAlign="center">
-          {educationTitle} & {skillsTitle}
-        </Heading>
+
 
         {/* Eğitim Bölümü */}
         {/* Eğitim Bölümü */}
         <Box mb={12} maxWidth="1000px" mx="auto">
-          <Heading size="lg" mb={4} color="white">
-            {educationTitle}
+          <Heading size="3xl" mb={4} textAlign="center" color="white">
+            <strong>{educationTitle}</strong>
           </Heading>
           {/* İçerik için arka plan ve padding */}
           <Box bg="blackAlpha.600" p={6} borderRadius="lg">
@@ -281,19 +280,25 @@ const HomePage = () => {
           <Heading size="3xl" mb={4} textAlign="center" color="white">
             <strong>{skillsTitle}</strong>
           </Heading>
-          <Box bg="blackAlpha.600" p={6} borderRadius="lg" maxWidth="1000px" mx="auto">
-            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
-              {skillsData.flatMap(({ label, value }, idx) => [
-                <Box key={`${idx}-label`} p={2} borderRadius="md">
-                  <Text fontWeight="bold" color="white" textAlign="left" minWidth="120px">
+          <Box maxWidth="1000px" mx="auto" p={4} borderRadius="md" bg="blackAlpha.600">
+            <VStack spacing={6} align="stretch">
+              {skillsData.map(({ label, value }, idx) => (
+                <HStack
+                  key={idx}
+                  justifyContent="space-between"
+                  p={2}
+                  borderRadius="md"
+                  borderWidth={1}
+                >
+                  <Text fontWeight="bold" color="white" minWidth="120px" textAlign="left">
                     {label}
                   </Text>
-                </Box>,
-                <Box key={`${idx}-progress`} p={2} borderRadius="md">
-                  <ProgressComponent value={value} />
-                </Box>
-              ])}
-            </SimpleGrid>
+                  <Box flex="1" maxWidth="300px" ml={4}>
+                    <ProgressComponent value={value} />
+                  </Box>
+                </HStack>
+              ))}
+            </VStack>
           </Box>
         </Box>
       </Box>
@@ -312,12 +317,12 @@ const HomePage = () => {
         </Heading>
 
         <SimpleGrid
-          columns={{ base: 1, md: 2, lg: 4 }}
+          columns={{ base: 1, md: 2 }}
           gap={6}
           maxWidth="1200px"
           mx="auto"
         >
-          {projectsData.map(({ title, description, link }, idx) => (
+          {projectsData.map(({ title, description, link, image }, idx) => (
             <Box
               key={idx}
               bg="blackAlpha.600"
@@ -325,14 +330,55 @@ const HomePage = () => {
               borderRadius="md"
               boxShadow="md"
               _hover={{ bg: "blackAlpha.800" }}
+              display="flex"
+              flexDirection="column"
+              height="100%"
             >
-              <Text fontWeight="bold" fontSize="lg" mb={2}>
+              {/* Başlık: tam genişlik */}
+              <Heading fontSize="lg" fontWeight="bold" mb={4} textAlign="center" width="100%">
                 {title}
-              </Text>
-              <Text mb={3} color="gray.300">
-                {description}
-              </Text>
-              <Link href={link} isExternal color="cyan.400" fontWeight="semibold">
+              </Heading>
+
+              {/* İçerik bölümü: sol fotoğraf, sağ açıklama */}
+              <Grid templateColumns="1fr 2fr" gap={4} flex="1" mb={4}>
+                {/* Sol: Fotoğraf */}
+                <Box
+                  borderRadius="md"
+                  overflow="hidden"
+                  bg="gray.700"
+                  maxHeight="150px"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  {image ? (
+                    <img
+                      src={image}
+                      alt={title}
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
+                  ) : (
+                    <Text color="gray.500" fontStyle="italic" textAlign="center" width="100%">
+                      No image
+                    </Text>
+                  )}
+                </Box>
+
+                {/* Sağ: Açıklama */}
+                <Text color="gray.300" lineHeight="tall" noOfLines={8} overflow="hidden">
+                  {description}
+                </Text>
+              </Grid>
+
+              {/* Alt: GitHub linki, tam genişlik */}
+              <Link
+                href={link}
+                isExternal
+                color="cyan.400"
+                fontWeight="semibold"
+                textAlign="center"
+                mt="auto"
+              >
                 {viewOnGitHub}
               </Link>
             </Box>

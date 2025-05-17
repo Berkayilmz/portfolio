@@ -11,6 +11,7 @@ function Layout() {
             bgSize="cover"
             bgPos="center"
             minH="100vh"
+
         >
             <NavbarComponent />
             <Outlet />
