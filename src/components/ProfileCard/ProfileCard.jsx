@@ -1,0 +1,54 @@
+import React from "react";
+import { VStack, Image, Heading, Text, HStack, Icon, Link } from "@chakra-ui/react";
+import { FaLinkedin, FaGithub, FaInstagram, FaEnvelope, FaReact } from "react-icons/fa";
+import { SiFirebase, SiMongodb, SiSelenium } from "react-icons/si";
+import profile from "../../assets/profile.png"; // Profil resminizin yolu
+
+const ProfileCard = ({cardContent}) => (
+  <VStack
+    spacing={5}
+    bg="blackAlpha.600"
+    p={8}
+    borderRadius="lg"
+    boxShadow="lg"
+    textAlign="center"
+    maxW="350px"
+  >
+    <Image
+      src={profile}
+      alt="Profil"
+      borderRadius="full"
+      boxSize="150px"
+      objectFit="cover"
+      shadow="lg"
+    />
+    <Heading size="xl" fontWeight="bold">
+      Berkay Yılmaz
+    </Heading>
+    <Text fontSize="md" color="gray.300" maxW="300px">
+      {cardContent}
+    </Text>
+    <HStack spacing={6} justifyContent="center" w="100%">
+      <Icon as={FaReact} boxSize={8} color="cyan.400" opacity={0.7} />
+      <Icon as={SiFirebase} boxSize={8} color="orange.400" opacity={0.7} />
+      <Icon as={SiMongodb} boxSize={8} color="green.400" opacity={0.7} />
+      <Icon as={SiSelenium} boxSize={8} color="gray.400" opacity={0.7} />
+    </HStack>
+    <HStack spacing={5} pt={6} justifyContent="center" w="100%">
+      <Link href="https://linkedin.com/in/berkayyilmaz" isExternal>
+        <Icon as={FaLinkedin} boxSize={6} color="white" _hover={{ color: "cyan.400" }} />
+      </Link>
+      <Link href="https://github.com/Berkayilmz" isExternal>
+        <Icon as={FaGithub} boxSize={6} color="white" _hover={{ color: "cyan.400" }} />
+      </Link>
+      <Link href="https://instagram.com/berkay" isExternal>
+        <Icon as={FaInstagram} boxSize={6} color="white" _hover={{ color: "cyan.400" }} />
+      </Link>
+      <Link href="mailto:berkay@example.com" isExternal>
+        <Icon as={FaEnvelope} boxSize={6} color="white" _hover={{ color: "cyan.400" }} />
+      </Link>
+    </HStack>
+  </VStack>
+);
+
+export default ProfileCard;

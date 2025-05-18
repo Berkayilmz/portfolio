@@ -1,10 +1,21 @@
-import { HStack, Box, Link, Icon } from "@chakra-ui/react";
-import { FiHome, FiFolder, FiGift, FiTool, FiEdit } from "react-icons/fi";
+import { HStack, Box, Icon } from "@chakra-ui/react";
+import { FiHome, FiFolder, FiTool, FiEdit } from "react-icons/fi";
+import { MdOutlineContactMail } from "react-icons/md";
+import { FaUniversity } from "react-icons/fa";
 import LanguageSwitch from "../Switch/LanguageSwitch";
-import { useLanguage } from "../../context/LanguageContext";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-const NavbarComponent = () => {
-  const { language } = useLanguage();
+const NavbarComponent = ({ scrollToSection }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleHomeClick = () => {
+    if (location.pathname === "/") {
+      scrollToSection("about-section");
+    } else {
+      navigate("/");
+    }
+  };
 
   return (
     <Box
@@ -17,18 +28,43 @@ const NavbarComponent = () => {
       py={2}
       borderRadius="2xl"
       boxShadow="lg"
-      bg="rgba(255, 255, 255, 0.05)" // Açık gri saydam
-      backdropFilter="blur(12px)"    // Bulanıklık efekti
-      border="1px solid rgba(255,255,255,0.2)" // Hafif çerçeve
+      bg="rgba(255, 255, 255, 0.05)"
+      backdropFilter="blur(12px)"
+      border="1px solid rgba(255,255,255,0.2)"
     >
       <HStack spacing={6}>
-        <Link href="/">
+        <Box
+          onClick={handleHomeClick}
+          cursor="pointer"
+          opacity={0.5}
+          _hover={{ opacity: 1 }}
+        >
           <Icon as={FiHome} boxSize={5} color="white" />
-        </Link>
-        <Link href="/about"><Icon as={FiFolder} boxSize={5} color="white" /></Link>
-        <Link href="/projects"><Icon as={FiGift} boxSize={5} color="white" /></Link>
-        <Link href="/contact"><Icon as={FiTool} boxSize={5} color="white" /></Link>
-        <Link href="/resume"><Icon as={FiEdit} boxSize={5} color="white" /></Link>
+        </Box>
+        <Box
+          onClick={() => scrollToSection("education-section")}
+          cursor="pointer"
+          opacity={0.5}
+          _hover={{ opacity: 1 }}
+        >
+          <Icon as={FaUniversity} boxSize={5} color="white" />
+        </Box>
+        <Box
+          onClick={() => scrollToSection("projects-section")}
+          cursor="pointer"
+          opacity={0.5}
+          _hover={{ opacity: 1 }}
+        >
+          <Icon as={FiFolder} boxSize={5} color="white" />
+        </Box>
+        <Box cursor="pointer" opacity={0.5} _hover={{ opacity: 1 }}>
+          <Link to="/contact">
+            <Icon as={MdOutlineContactMail} boxSize={5} color="white" />
+          </Link>
+        </Box>
+        <Box cursor="pointer" opacity={0.5} _hover={{ opacity: 1 }}>
+          <Icon as={FiEdit} boxSize={5} color="white" />
+        </Box>
         <LanguageSwitch />
       </HStack>
     </Box>
