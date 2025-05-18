@@ -7,14 +7,14 @@ const data = {
         title: "WeatherWay",
         description:
           "WeatherWay, iki şehir arasında rota oluşturup güzergah üzerindeki saatlik hava durumunu analiz eden bir mobil uygulamadır.",
-        link: "https://github.com/Berkayilmz/project1",
+        link: "https://github.com/Berkayilmz/WeatherWay-Showcase",
         image: projectImage,
       },
       {
         title: "Secretum",
         description:
           "Kullanıcıların günlük tutmasını, her gününü bir emoji ile ifade etmesini ve görsel yükleyerek anılarını daha anlamlı hale getirmesini sağlayan bir mobil uygulamadır.",
-        link: "https://github.com/Berkayilmz/project2",
+        link: "https://github.com/Berkayilmz/Secretum",
         image: projectImage,
       },
     ],
@@ -50,14 +50,14 @@ const data = {
         title: "WeatherWay",
         description:
           "WeatherWay is a mobile app that creates routes between two cities and analyzes hourly weather conditions along the route.",
-        link: "https://github.com/Berkayilmz/project1",
+        link: "https://github.com/Berkayilmz/WeatherWay-Showcase",
         image: projectImage,
       },
       {
         title: "Secretum",
         description:
           "Secretum is a mobile app that allows users to keep daily journals, express each day with an emoji, and upload images to make memories more meaningful.",
-        link: "https://github.com/Berkayilmz/project2",
+        link: "https://github.com/Berkayilmz/Secretum",
         image: projectImage,
       },
     ],

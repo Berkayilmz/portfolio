@@ -35,16 +35,16 @@ const ProfileCard = ({cardContent}) => (
       <Icon as={SiSelenium} boxSize={8} color="gray.400" opacity={0.7} />
     </HStack>
     <HStack spacing={5} pt={6} justifyContent="center" w="100%">
-      <Link href="https://linkedin.com/in/berkayyilmaz" isExternal>
+      <Link href="https://www.linkedin.com/in/berkay-yılmaz-088b8a271/" isExternal>
         <Icon as={FaLinkedin} boxSize={6} color="white" _hover={{ color: "cyan.400" }} />
       </Link>
       <Link href="https://github.com/Berkayilmz" isExternal>
         <Icon as={FaGithub} boxSize={6} color="white" _hover={{ color: "cyan.400" }} />
       </Link>
-      <Link href="https://instagram.com/berkay" isExternal>
+      <Link href="https://instagram.com/berkayyilmzzz" isExternal>
         <Icon as={FaInstagram} boxSize={6} color="white" _hover={{ color: "cyan.400" }} />
       </Link>
-      <Link href="mailto:berkay@example.com" isExternal>
+      <Link href="mailto:berkayyilmz01@gmail.com" isExternal>
         <Icon as={FaEnvelope} boxSize={6} color="white" _hover={{ color: "cyan.400" }} />
       </Link>
     </HStack>
