@@ -37,7 +37,7 @@ const HomePage = () => {
     <Box
       height="100vh"
       overflowY="auto"
-      scrollSnapType={{base: 'none', md: 'y mandatory'}}
+      //scrollSnapType={{base: 'none', md: 'y mandatory'}}
       bg="transparent"
       color="white"
     >
@@ -48,7 +48,7 @@ const HomePage = () => {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        scrollSnapAlign="start"
+        //scrollSnapAlign="none"
         bg="transparent"
         px={{ base: 4, md: 12 }}
         id="about-section"
@@ -75,9 +75,9 @@ const HomePage = () => {
         bg="transparent"
         px={{ base: 4, md: 12 }}
         py={{ base: 8, md: 12 }}
-        scrollSnapAlign="start"
+        //scrollSnapAlign="none"
         color="white"
-        overflowY="auto"
+        overflowY="visible"
         id="education-section"
       >
 
@@ -94,7 +94,7 @@ const HomePage = () => {
         bg="transparent"
         px={{ base: 4, md: 12 }}
         py={{ base: 8, md: 12 }}
-        scrollSnapAlign="start"
+        //scrollSnapAlign="none"
         color="white"
         id="projects-section"
       >

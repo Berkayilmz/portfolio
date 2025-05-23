@@ -9,8 +9,8 @@ const data = {
       {
         title: "WeatherWay",
         description:
-          "WeatherWay, iki şehir arasında rota oluşturup güzergah üzerindeki saatlik hava durumunu analiz eden bir mobil uygulamadır.",
-        link: "https://github.com/Berkayilmz/WeatherWay-Showcase,weatherwayUyarı1",
+        "WeatherWay, çıkış ve varış şehirleri arasında rota oluşturarak güzergah üzerindeki saatlik hava durumu verilerini ayrıntılı şekilde sunan bir mobil uygulamadır. OSRM ile rota, Google Maps ile harita ve OpenWeather API ile 4 güne kadar tahmin sağlanır. Kullanıcılar, seyahat tarih ve saatini seçerek rotalarındaki olası sis, yağmur, rüzgar ve sıcaklık gibi detaylara önceden ulaşabilir. Uygulama, güvenli ve planlı yolculuklar için kişisel bir hava durumu rehberi gibi çalışır.",
+        link: "https://github.com/Berkayilmz/WeatherWay-Showcase",
         images: [
           "/assets/AppPng/weatherwayPNG/ana-ekran-rota.jpeg",
           "/assets/AppPng/weatherwayPNG/1.jpeg",
@@ -24,7 +24,7 @@ const data = {
       {
         title: "Secretum",
         description:
-          "Kullanıcıların günlük tutmasını, her gününü bir emoji ile ifade etmesini ve görsel yükleyerek anılarını daha anlamlı hale getirmesini sağlayan bir mobil uygulamadır.",
+        "React Native (Expo) ile geliştirilen, Firebase Auth & Firestore altyapısını kullanan mobil günlük uygulaması. Kullanıcılar günlüklerine başlık, içerik, emoji ve görsel ekleyebilir. AES algoritması ile cihazda yerel olarak şifreleme uygulanır; bu sayede uygulama sahibi dahi kullanıcı içeriklerini okuyamaz. Takvim görünümü, gizli günlük gösterimi ve kullanıcı istatistikleri gibi özellikler sunar.",
         link: "https://github.com/Berkayilmz/Secretum",
         images: [
           "/assets/AppPng/secretumPNG/home-screen.jpeg",
@@ -35,6 +35,28 @@ const data = {
           "/assets/AppPng/secretumPNG/5.jpeg",
           "/assets/AppPng/secretumPNG/6.jpeg",
           "/assets/AppPng/secretumPNG/7.jpeg",
+        ],
+      },
+      {
+        title: "RentCar.NET",
+        description:
+        ".NetBackendProject, ASP.NET Core Web API (.NET 6) ile geliştirilmiş, katmanlı mimariye sahip bir backend altyapı projesidir. Temiz kod, sürdürülebilirlik ve genişletilebilirlik ön plandadır. Öğrenme, geliştirme veya hızlı başlangıç (boilerplate) için idealdir. Controller, Service, Repository, DTO katmanlarına sahiptir; veritabanı işlemleri Entity Framework Core ile yapılır. Swagger UI ile REST API testleri kolaydır. JWT, AutoMapper ve Serilog ile genişletilebilir.",
+        link: "https://github.com/Berkayilmz/rentacar-.net",
+        images: [
+          "/assets/AppPng/rentacarPNG/1.jpeg",
+          "/assets/AppPng/rentacarPNG/2.jpeg",
+          "/assets/AppPng/rentacarPNG/3.jpeg"
+        ],
+      },
+      {
+        title: "Bookstore",
+        description:
+          "Bookstore, MERN (MongoDB, Express.js, React, Node.js) yapısı kullanılarak geliştirdiğim bir kitap takip uygulamasıdır. Uygulama üzerinden kitap ekleme, düzenleme, silme ve listeleme gibi temel CRUD işlemleri yapılabilmektedir. Bu projeyi, tam anlamıyla MERN mimarisini öğrenmek, front-end ve back-end tarafını entegre bir şekilde çalıştırmak amacıyla geliştirdim. Özellikle RESTful API tasarımı ve veri yönetimi konularında deneyim kazandığım bir çalışma oldu.",
+        link: "https://github.com/Berkayilmz/BookStoreMERN",
+        images: [
+          "/assets/AppPng/bookstorePNG/1.jpeg",
+          "/assets/AppPng/bookstorePNG/2.jpeg",
+          "/assets/AppPng/bookstorePNG/3.jpeg"
         ],
       },
     ],
@@ -69,7 +91,7 @@ const data = {
       {
         title: "WeatherWay",
         description:
-          "WeatherWay is a mobile app that creates routes between two cities and analyzes hourly weather conditions along the route.",
+        "WeatherWay is a mobile app that generates routes between cities and provides detailed hourly weather data along the path. It uses OSRM for routing, Google Maps for visualization, and OpenWeather API for up to 4 days of forecasts. Users can select their departure date and time, and get advanced warnings for fog, rain, wind, or freezing temperatures on their route. The app acts like a personal weather assistant for safe and well-informed travels.",
         link: "https://github.com/Berkayilmz/WeatherWay-Showcase",
         images: [
           "/assets/AppPng/weatherwayPNG/ana-ekran-rota.jpeg",
@@ -84,7 +106,7 @@ const data = {
       {
         title: "Secretum",
         description:
-          "Secretum is a mobile app that allows users to keep daily journals, express each day with an emoji, and upload images to make memories more meaningful.",
+        "A mobile journaling app built with React Native (Expo) and powered by Firebase Auth & Firestore. Users can write daily notes with a title, content, emoji, and image. Local AES encryption ensures that even the app owner cannot access user data. Includes calendar view, private entry display, and user statistics features.",
         link: "https://github.com/Berkayilmz/Secretum",
         images: [
           "/assets/AppPng/secretumPNG/home-screen.jpeg",
@@ -97,6 +119,28 @@ const data = {
           "/assets/AppPng/secretumPNG/7.jpeg",
         ],
       },
+      {
+        title: "RentCar.NET",
+        description:
+        ".NetBackendProject is a backend infrastructure project developed using ASP.NET Core Web API (.NET 6) with a layered architecture. It prioritizes clean code, maintainability, and scalability. Ideal for learning, development, or as a boilerplate for quick project setup. The project includes Controller, Service, Repository, and DTO layers, with database operations handled via Entity Framework Core. REST API testing is easy with Swagger UI. It is extensible with tools like JWT, AutoMapper, and Serilog.",
+        link: "https://github.com/Berkayilmz/rentacar-.net",
+        images: [
+          "/assets/AppPng/rentacarPNG/1.jpeg",
+          "/assets/AppPng/rentacarPNG/2.jpeg",
+          "/assets/AppPng/rentacarPNG/3.jpeg"
+        ],
+      },
+      {
+        title: "Bookstore",
+        description:
+          "Bookstore is a book tracking application I developed using the MERN stack (MongoDB, Express.js, React, Node.js). It allows users to perform core CRUD operations such as adding, editing, deleting, and listing books. I built this project to learn and internalize how the full MERN architecture works together in an integrated manner. It was especially valuable for gaining hands-on experience with RESTful API design and data management across front-end and back-end layers.",
+        link: "https://github.com/Berkayilmz/BookStoreMERN",
+        images: [
+          "/assets/AppPng/bookstorePNG/1.jpeg",
+          "/assets/AppPng/bookstorePNG/2.jpeg",
+          "/assets/AppPng/bookstorePNG/3.jpeg"
+        ],
+      }
     ],
     educationData: [
       { label: "Computer Science", value: "Süleyman Demirel University • 2021 - Present" },

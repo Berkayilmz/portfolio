@@ -4,10 +4,32 @@ import { MdOutlineContactMail } from "react-icons/md";
 import { FaUniversity } from "react-icons/fa";
 import LanguageSwitch from "../Switch/LanguageSwitch";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, {useEffect} from "react";
 
 const NavbarComponent = ({ scrollToSection }) => {
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Yeni state scroll yapılacak section id’si için (React state veya ref ile)
+  const [pendingScroll, setPendingScroll] = React.useState(null);
+
+  useEffect(() => {
+    // Eğer pendingScroll varsa ve anasayfadaysak scroll yap
+    if (pendingScroll && location.pathname === "/") {
+      scrollToSection(pendingScroll);
+      setPendingScroll(null);
+    }
+  }, [pendingScroll, location.pathname, scrollToSection]);
+
+  // Fonksiyonu güncelle
+  const handleScrollOrNavigate = (sectionId) => {
+    if (location.pathname === "/") {
+      scrollToSection(sectionId);
+    } else {
+      setPendingScroll(sectionId);  // Scroll yapılacak section’u kaydet
+      navigate("/");                // Anasayfaya git
+    }
+  };
 
   const handleHomeClick = () => {
     if (location.pathname === "/") {
@@ -42,7 +64,7 @@ const NavbarComponent = ({ scrollToSection }) => {
           <Icon as={FiHome} boxSize={5} color="white" />
         </Box>
         <Box
-          onClick={() => scrollToSection("education-section")}
+          onClick={() => handleScrollOrNavigate("education-section")}
           cursor="pointer"
           opacity={0.5}
           _hover={{ opacity: 1 }}
@@ -50,7 +72,7 @@ const NavbarComponent = ({ scrollToSection }) => {
           <Icon as={FaUniversity} boxSize={5} color="white" />
         </Box>
         <Box
-          onClick={() => scrollToSection("projects-section")}
+          onClick={() => handleScrollOrNavigate("projects-section")}
           cursor="pointer"
           opacity={0.5}
           _hover={{ opacity: 1 }}
