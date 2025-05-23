@@ -62,9 +62,7 @@ const NavbarComponent = ({ scrollToSection }) => {
             <Icon as={MdOutlineContactMail} boxSize={5} color="white" />
           </Link>
         </Box>
-        <Box cursor="pointer" opacity={0.5} _hover={{ opacity: 1 }}>
-          <Icon as={FiEdit} boxSize={5} color="white" />
-        </Box>
+
         <LanguageSwitch />
       </HStack>
     </Box>

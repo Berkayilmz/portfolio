@@ -1,5 +1,8 @@
 import projectImage from '../phone.png'; // assets içindeki resim yolu
 
+
+
+
 const data = {
   tr: {
     projectsData: [
@@ -7,15 +10,32 @@ const data = {
         title: "WeatherWay",
         description:
           "WeatherWay, iki şehir arasında rota oluşturup güzergah üzerindeki saatlik hava durumunu analiz eden bir mobil uygulamadır.",
-        link: "https://github.com/Berkayilmz/WeatherWay-Showcase",
-        image: projectImage,
+        link: "https://github.com/Berkayilmz/WeatherWay-Showcase,weatherwayUyarı1",
+        images: [
+          "/assets/AppPng/weatherwayPNG/ana-ekran-rota.jpeg",
+          "/assets/AppPng/weatherwayPNG/1.jpeg",
+          "/assets/AppPng/weatherwayPNG/2.jpeg",
+          "/assets/AppPng/weatherwayPNG/3.jpeg",
+          "/assets/AppPng/weatherwayPNG/4.jpeg",
+          "/assets/AppPng/weatherwayPNG/5.jpeg",
+          "/assets/AppPng/weatherwayPNG/6.jpeg",
+        ],
       },
       {
         title: "Secretum",
         description:
           "Kullanıcıların günlük tutmasını, her gününü bir emoji ile ifade etmesini ve görsel yükleyerek anılarını daha anlamlı hale getirmesini sağlayan bir mobil uygulamadır.",
         link: "https://github.com/Berkayilmz/Secretum",
-        image: projectImage,
+        images: [
+          "/assets/AppPng/secretumPNG/home-screen.jpeg",
+          "/assets/AppPng/secretumPNG/1.jpeg",
+          "/assets/AppPng/secretumPNG/2.jpeg",
+          "/assets/AppPng/secretumPNG/3.jpeg",
+          "/assets/AppPng/secretumPNG/4.jpeg",
+          "/assets/AppPng/secretumPNG/5.jpeg",
+          "/assets/AppPng/secretumPNG/6.jpeg",
+          "/assets/AppPng/secretumPNG/7.jpeg",
+        ],
       },
     ],
     educationData: [
@@ -51,14 +71,31 @@ const data = {
         description:
           "WeatherWay is a mobile app that creates routes between two cities and analyzes hourly weather conditions along the route.",
         link: "https://github.com/Berkayilmz/WeatherWay-Showcase",
-        image: projectImage,
+        images: [
+          "/assets/AppPng/weatherwayPNG/ana-ekran-rota.jpeg",
+          "/assets/AppPng/weatherwayPNG/1.jpeg",
+          "/assets/AppPng/weatherwayPNG/2.jpeg",
+          "/assets/AppPng/weatherwayPNG/3.jpeg",
+          "/assets/AppPng/weatherwayPNG/4.jpeg",
+          "/assets/AppPng/weatherwayPNG/5.jpeg",
+          "/assets/AppPng/weatherwayPNG/6.jpeg",
+        ],
       },
       {
         title: "Secretum",
         description:
           "Secretum is a mobile app that allows users to keep daily journals, express each day with an emoji, and upload images to make memories more meaningful.",
         link: "https://github.com/Berkayilmz/Secretum",
-        image: projectImage,
+        images: [
+          "/assets/AppPng/secretumPNG/home-screen.jpeg",
+          "/assets/AppPng/secretumPNG/1.jpeg",
+          "/assets/AppPng/secretumPNG/2.jpeg",
+          "/assets/AppPng/secretumPNG/3.jpeg",
+          "/assets/AppPng/secretumPNG/4.jpeg",
+          "/assets/AppPng/secretumPNG/5.jpeg",
+          "/assets/AppPng/secretumPNG/6.jpeg",
+          "/assets/AppPng/secretumPNG/7.jpeg",
+        ],
       },
     ],
     educationData: [

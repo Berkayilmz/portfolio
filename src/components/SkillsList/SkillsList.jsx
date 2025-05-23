@@ -10,6 +10,7 @@ const SkillsList = ({ title, skillsData }) => (
     <VStack spacing={6} align="stretch">
       {skillsData.map(({ label, value }, idx) => (
         <HStack
+          width={{base: ''}}
           key={idx}
           justifyContent="space-between"
           p={2}

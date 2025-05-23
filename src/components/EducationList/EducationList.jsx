@@ -2,7 +2,7 @@ import React from "react";
 import { Box, VStack, Heading, Text } from "@chakra-ui/react";
 
 const EducationList = ({ title, educationData }) => (
-  <Box px={{ base: 4 }} py={{ base: 8, md: 12 }} maxWidth="1000px" mx="auto">
+  <Box px={{ base: 4 }} py={{ base: 8, md: 4 }} maxWidth="1000px" mx="auto">
     <Heading size="3xl" mb={4} textAlign="center" color="white">
       <strong>{title}</strong>
     </Heading>

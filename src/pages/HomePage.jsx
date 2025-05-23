@@ -37,14 +37,14 @@ const HomePage = () => {
     <Box
       height="100vh"
       overflowY="auto"
-      scrollSnapType="y mandatory"
+      scrollSnapType={{base: 'none', md: 'y mandatory'}}
       bg="transparent"
       color="white"
     >
 
       {/* Section 1: Profil ve Hakkımda */}
       <Box
-        height="100vh"
+        height={{ base: 'none', md: '100vh'}}
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -71,7 +71,7 @@ const HomePage = () => {
 
       {/* Section 2: Eğitim ve Yetenekler */}
       <Box
-        height="100vh"
+        height={{ base: 'none', md: '90vh'}}
         bg="transparent"
         px={{ base: 4, md: 12 }}
         py={{ base: 8, md: 12 }}
@@ -90,7 +90,7 @@ const HomePage = () => {
 
       {/* Section 3: Projeler */}
       <Box
-        height="100vh"
+        height={{ base: 'none', md: '100vh'}}
         bg="transparent"
         px={{ base: 4, md: 12 }}
         py={{ base: 8, md: 12 }}

@@ -2,30 +2,38 @@ import React from "react";
 import { VStack, Image, Heading, Text, HStack, Icon, Link } from "@chakra-ui/react";
 import { FaLinkedin, FaGithub, FaInstagram, FaEnvelope, FaReact } from "react-icons/fa";
 import { SiFirebase, SiMongodb, SiSelenium } from "react-icons/si";
-import profile from "../../assets/profile.png"; // Profil resminizin yolu
+import profile from "../../assets/profile.png";
 
-const ProfileCard = ({cardContent}) => (
+const ProfileCard = ({ cardContent }) => (
   <VStack
+    maxW={{ base: "320px", md: "350px" }}
+    p={{ base: 6, md: 8 }}
+    mt={{base: 20, md: 'auto'}}
     spacing={5}
     bg="blackAlpha.600"
-    p={8}
     borderRadius="lg"
     boxShadow="lg"
     textAlign="center"
-    maxW="350px"
+    mx="auto"
+    overflow="visible"   // Taşmaları görünür yap
+    position="relative"  // Pozisyonlandırma varsa çakışmayı azaltır
+    minHeight={{ base: "400px", md: "auto" }} 
+    justifyContent={{ base: "flex-end" }} 
   >
     <Image
       src={profile}
       alt="Profil"
       borderRadius="full"
-      boxSize="150px"
+      boxSize={{ base: "140px", md: "150px" }}  // Mobilde biraz büyük tut
       objectFit="cover"
       shadow="lg"
+      mt={{ base: 0, md: 0 }}  // Üst boşluk gereksizse sıfır yapın
+      display="block"
     />
-    <Heading size="xl" fontWeight="bold">
+    <Heading size="xl" fontWeight="bold" mt={2}>
       Berkay Yılmaz
     </Heading>
-    <Text fontSize="md" color="gray.300" maxW="300px">
+    <Text fontSize="md" color="gray.300" maxW="300px" px={{ base: 3, md: 0 }}>
       {cardContent}
     </Text>
     <HStack spacing={6} justifyContent="center" w="100%">

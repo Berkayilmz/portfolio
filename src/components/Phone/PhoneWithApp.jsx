@@ -12,7 +12,7 @@ const PhoneWithApp = ({ title }) => {
       bg='blackAlpha.800'
     >
       <Image
-        src={require(`../../assets/AppPng/${title}.png`)}
+        src={`/assets/AppPng/${title}.png`}
         alt={`${title} Screenshot`}
         width="100%"
         height="100%"
