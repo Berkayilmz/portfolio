@@ -6,22 +6,37 @@ import {
   Text,
   Link,
   Flex,
-  VStack,
   Portal,
   Button,
   Image,
   useBreakpointValue,
+  CloseButton,
 } from "@chakra-ui/react";
 import PhoneWithApp from "../Phone/PhoneWithApp";
+
+const chunkArray = (arr, size) => {
+  const chunked = [];
+  for (let i = 0; i < arr.length; i += size) {
+    chunked.push(arr.slice(i, i + size));
+  }
+  return chunked;
+};
 
 const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
   const isMobile = useBreakpointValue({ base: true, md: false });
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [zoomed, setZoomed] = useState(false);
+
+  // Sayfalama için durum
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = isMobile ? 2 : 2; // Mobilde 2 başlık+fotoğraf gösterelim
+  const totalPages = Math.ceil(projectsData.length / itemsPerPage);
 
   const closeModal = () => {
     setSelectedProject(null);
     setCurrentImageIndex(0);
+    setZoomed(false);
   };
 
   const prevImage = () => {
@@ -29,6 +44,7 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
     setCurrentImageIndex((idx) =>
       idx === 0 ? selectedProject.images.length - 1 : idx - 1
     );
+    setZoomed(false);
   };
 
   const nextImage = () => {
@@ -36,7 +52,19 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
     setCurrentImageIndex((idx) =>
       idx === selectedProject.images.length - 1 ? 0 : idx + 1
     );
+    setZoomed(false);
   };
+
+  const changePage = (page) => {
+    if (page < 1 || page > totalPages) return;
+    setCurrentPage(page);
+  };
+
+  // Sayfaya göre projeleri böl
+  const displayedProjects = projectsData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   return (
     <Box
@@ -51,9 +79,10 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
         {title}
       </Heading>
 
+      {/* Mobilde sadece başlık ve fotoğraf göster */}
       {isMobile ? (
-        <SimpleGrid columns={2} gap={4} maxWidth="100%" mx="auto">
-          {projectsData.map(({ title, link }, idx) => (
+        <SimpleGrid columns={2} gap={6} maxWidth="1200px" mx="auto">
+          {displayedProjects.map(({ title, link }, idx) => (
             <Box
               key={idx}
               bg="blackAlpha.600"
@@ -65,7 +94,7 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
               flexDirection="column"
               alignItems="center"
               textAlign="center"
-              onClick={() => setSelectedProject(projectsData[idx])}
+              onClick={() => setSelectedProject(displayedProjects[idx])}
             >
               <Heading fontSize="md" fontWeight="bold" mb={3} width="100%">
                 {title}
@@ -102,8 +131,9 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
           ))}
         </SimpleGrid>
       ) : (
+        // Web görünümü orijinal gibi kalıyor
         <SimpleGrid columns={2} gap={6} maxWidth="1200px" mx="auto">
-          {projectsData.map(({ title, description, link }, idx) => (
+          {displayedProjects.map(({ title, description, link }, idx) => (
             <Box
               key={idx}
               bg="blackAlpha.600"
@@ -113,8 +143,8 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
               _hover={{ bg: "blackAlpha.800", cursor: "pointer" }}
               display="flex"
               flexDirection="column"
-              height="100%"
-              onClick={() => setSelectedProject(projectsData[idx])}
+              height="50vh"
+              onClick={() => setSelectedProject(displayedProjects[idx])}
             >
               <Heading
                 fontSize="lg"
@@ -137,14 +167,15 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
                   borderRadius="md"
                   overflow="hidden"
                   bg="gray.700"
-                  maxHeight="320px"
-                  maxWidth="150px"
+                  maxHeight="384px"
+                  maxWidth="180px"
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
                   mx="auto"
+                  ml={2}
                   borderWidth={3}
-                  borderColor="#c96216"
+                  borderColor="cyan.400"
                 >
                   <PhoneWithApp title={title} />
                 </Box>
@@ -171,6 +202,33 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
         </SimpleGrid>
       )}
 
+      {/* Sayfalama Butonları */}
+      <Flex justifyContent="center" mt={8} gap={4} flexWrap="wrap">
+        <Button
+          onClick={() => changePage(currentPage - 1)}
+          isDisabled={currentPage === 1}
+          backgroundColor='cyan.400'
+        >
+          Önceki
+        </Button>
+        {[...Array(totalPages)].map((_, i) => (
+          <Button
+            key={i}
+            onClick={() => changePage(i + 1)}
+            variant={currentPage === i + 1 ? "solid" : "outline"}
+          >
+            {i + 1}
+          </Button>
+        ))}
+        <Button
+          onClick={() => changePage(currentPage + 1)}
+          isDisabled={currentPage === totalPages}
+          backgroundColor='cyan.400'
+        >
+          Sonraki
+        </Button>
+      </Flex>
+
       {/* Modal */}
       {selectedProject && (
         <Portal>
@@ -190,14 +248,22 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
               bg="gray.900"
               p={6}
               borderRadius="md"
-              maxW="600px"
-              maxH="80vh"
+              maxW="550px"
+              maxH="100vh"
               overflowY="auto"
               color="white"
               boxShadow="lg"
               position="relative"
             >
-              <Heading mb={4}>{selectedProject.title}</Heading>
+              <CloseButton
+                position="absolute"
+                top={4}
+                right={4}
+                onClick={closeModal}
+                color="white"
+                zIndex={10}
+              />
+              {!zoomed && <Heading mb={4}>{selectedProject.title}</Heading>}
 
               {/* Slider */}
               {selectedProject.images && selectedProject.images.length > 0 && (
@@ -209,16 +275,28 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
                     zIndex={10}
                     colorScheme="cyan"
                     size="sm"
+                    background="transparent"
+                    _hover={{ bg: "cyan.600", color: "white" }}
+                    color="white"
                   >
                     {"<"}
                   </Button>
-                  <Box flex="1" textAlign="center" mx={10}>
+                  <Box
+                    flex="1"
+                    textAlign="center"
+                    mx={10}
+                    onClick={() => setZoomed(!zoomed)}
+                    cursor={zoomed ? "zoom-out" : "zoom-in"}
+                  >
                     <Image
                       src={selectedProject.images[currentImageIndex]}
                       alt={`Image ${currentImageIndex + 1}`}
-                      maxH="300px"
+                      maxH={zoomed ? "60vh" : "400px"}
                       borderRadius="md"
                       mx="auto"
+                      my="10"
+                      transition="transform 0.3s ease"
+                      transform={zoomed ? "scale(1.1)" : "scale(1)"}
                     />
                   </Box>
                   <Button
@@ -228,28 +306,32 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
                     zIndex={10}
                     colorScheme="cyan"
                     size="sm"
+                    background="transparent"
+                    _hover={{ bg: "cyan.600", color: "white" }}
+                    color="white"
                   >
                     {">"}
                   </Button>
                 </Flex>
               )}
 
-              <Text mb={6}>{selectedProject.description}</Text>
-
-              <Flex justifyContent="flex-end" gap={4}>
-                <Button onClick={closeModal} colorScheme="cyan">
-                  Close
-                </Button>
-                <Link
-                  href={selectedProject.link}
-                  isExternal
-                  color="cyan.400"
-                  fontWeight="semibold"
-                  alignSelf="center"
-                >
-                  {viewOnGitHub}
-                </Link>
-              </Flex>
+              {/* Açıklama */}
+              {!zoomed && (
+                <>
+                  <Text mb={6}>{selectedProject.description}</Text>
+                  <Flex justifyContent="flex-end" gap={4}>
+                    <Link
+                      href={selectedProject.link}
+                      isExternal
+                      color="cyan.400"
+                      fontWeight="semibold"
+                      alignSelf="center"
+                    >
+                      {viewOnGitHub}
+                    </Link>
+                  </Flex>
+                </>
+              )}
             </Box>
           </Box>
         </Portal>

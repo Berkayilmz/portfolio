@@ -1,22 +1,21 @@
-import React, { useRef } from "react";
+import React from "react";
 import {
   Box,
   Grid,
-  useRadioGroup,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { useLanguage } from "../context/LanguageContext"; // Dil context hook
-import projectImage from '../assets/phone.png'
 import ProfileCard from "../components/ProfileCard/ProfileCard";
 import AboutMe from "../components/AboutMe/AboutMe";
 import EducationList from "../components/EducationList/EducationList";
 import SkillsList from "../components/SkillsList/SkillsList";
 import ProjectsList from "../components/ProjectsList/ProjectsList";
+import ContactForm from "../components/ContactForm/ContactForm";  // ContactForm importu
 
 import data from "../assets/data/data";
 
 const HomePage = () => {
-  const { language, toggleLanguage } = useLanguage();
-
+  const { language } = useLanguage();
 
   const {
     projectsData,
@@ -31,24 +30,19 @@ const HomePage = () => {
     viewOnGitHub,
   } = data[language];
 
-
-
   return (
     <Box
       height="100vh"
       overflowY="auto"
-      //scrollSnapType={{base: 'none', md: 'y mandatory'}}
       bg="transparent"
       color="white"
     >
-
       {/* Section 1: Profil ve Hakkımda */}
       <Box
-        height={{ base: 'none', md: '100vh'}}
+        height={{ base: 'none', md: '100vh' }}
         display="flex"
         justifyContent="center"
         alignItems="center"
-        //scrollSnapAlign="none"
         bg="transparent"
         px={{ base: 4, md: 12 }}
         id="about-section"
@@ -61,51 +55,52 @@ const HomePage = () => {
           color="white"
           alignItems="center"
         >
-          {/* Profil Kart */}
-          <ProfileCard cardContent={cardContent}/>
-
-          {/* Hakkımda Metin */}
+          <ProfileCard cardContent={cardContent} />
           <AboutMe title={aboutTitle} texts={aboutTexts} />
         </Grid>
       </Box>
 
       {/* Section 2: Eğitim ve Yetenekler */}
       <Box
-        height={{ base: 'none', md: '90vh'}}
+        height={{ base: 'none', md: '90vh' }}
         bg="transparent"
         px={{ base: 4, md: 12 }}
         py={{ base: 8, md: 12 }}
-        //scrollSnapAlign="none"
         color="white"
         overflowY="visible"
         id="education-section"
       >
-
-        {/* Eğitim Bölümü */}
-        <EducationList title={educationTitle} educationData={educationData}/>
-
-        {/* Yetenekler Bölümü */}
-        <SkillsList title={skillsTitle} skillsData={skillsData}/>
+        <EducationList title={educationTitle} educationData={educationData} />
+        <SkillsList title={skillsTitle} skillsData={skillsData} />
       </Box>
 
       {/* Section 3: Projeler */}
       <Box
-        height={{ base: 'none', md: '100vh'}}
+        height={{ base: 'none', md: '100vh' }}
         bg="transparent"
         px={{ base: 4, md: 12 }}
         py={{ base: 8, md: 12 }}
-        //scrollSnapAlign="none"
         color="white"
         id="projects-section"
       >
-
-        {/* Projects */}
-
         <ProjectsList
           title={projectsTitle}
           projectsData={projectsData}
           viewOnGitHub={viewOnGitHub}
         />
+      </Box>
+
+      {/* Section 4: İletişim */}
+      <Box
+        height={{ base: 'none', md: '100vh' }}
+
+        bg="transparent"
+        color="white"
+        px={{ base: 4, md: 12 }}
+        py={{ base: 8, md: 12 }}
+        id="contact-section"
+      >
+        <ContactForm />
       </Box>
     </Box>
   );

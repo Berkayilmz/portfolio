@@ -4,8 +4,8 @@ import { Box, Image } from "@chakra-ui/react";
 const PhoneWithApp = ({ title }) => {
   return (
     <Box
-      width="250px"
-      height="470px"
+      width="300px"
+      height="564px"
       overflow="hidden"
       borderRadius="30px"
       boxShadow="0 0 15px rgba(0,0,0,0.3)"

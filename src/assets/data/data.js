@@ -9,7 +9,7 @@ const data = {
       {
         title: "WeatherWay",
         description:
-        "WeatherWay, çıkış ve varış şehirleri arasında rota oluşturarak güzergah üzerindeki saatlik hava durumu verilerini ayrıntılı şekilde sunan bir mobil uygulamadır. OSRM ile rota, Google Maps ile harita ve OpenWeather API ile 4 güne kadar tahmin sağlanır. Kullanıcılar, seyahat tarih ve saatini seçerek rotalarındaki olası sis, yağmur, rüzgar ve sıcaklık gibi detaylara önceden ulaşabilir. Uygulama, güvenli ve planlı yolculuklar için kişisel bir hava durumu rehberi gibi çalışır.",
+        "WeatherWay, çıkış ve varış şehirleri arasında rota oluşturarak güzergah üzerindeki saatlik hava durumu verilerini ayrıntılı şekilde sunan bir mobil uygulamadır. OSRM ile rota, Google Maps ile harita ve OpenWeather API ile 4 güne kadar tahmin sağlanır. Kullanıcılar, seyahat tarih ve saatini seçerek rotalarındaki olası sis, yağmur, rüzgar ve sıcaklık gibi detaylara önceden ulaşabilir. Uygulama, güvenli ve planlı yolculuklar için kişisel bir hava durumu rehberi gibi çalışır. ",
         link: "https://github.com/Berkayilmz/WeatherWay-Showcase",
         images: [
           "/assets/AppPng/weatherwayPNG/ana-ekran-rota.jpeg",

@@ -1,33 +1,30 @@
 import { HStack, Box, Icon } from "@chakra-ui/react";
-import { FiHome, FiFolder, FiTool, FiEdit } from "react-icons/fi";
+import { FiHome, FiFolder } from "react-icons/fi";
 import { MdOutlineContactMail } from "react-icons/md";
 import { FaUniversity } from "react-icons/fa";
 import LanguageSwitch from "../Switch/LanguageSwitch";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 
-const NavbarComponent = ({ scrollToSection }) => {
+const NavbarComponent = ({ scrollToSection, activeSection }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Yeni state scroll yapılacak section id’si için (React state veya ref ile)
-  const [pendingScroll, setPendingScroll] = React.useState(null);
+  const [pendingScroll, setPendingScroll] = useState(null);
 
   useEffect(() => {
-    // Eğer pendingScroll varsa ve anasayfadaysak scroll yap
     if (pendingScroll && location.pathname === "/") {
       scrollToSection(pendingScroll);
       setPendingScroll(null);
     }
   }, [pendingScroll, location.pathname, scrollToSection]);
 
-  // Fonksiyonu güncelle
   const handleScrollOrNavigate = (sectionId) => {
     if (location.pathname === "/") {
       scrollToSection(sectionId);
     } else {
-      setPendingScroll(sectionId);  // Scroll yapılacak section’u kaydet
-      navigate("/");                // Anasayfaya git
+      setPendingScroll(sectionId);
+      navigate("/");
     }
   };
 
@@ -38,6 +35,14 @@ const NavbarComponent = ({ scrollToSection }) => {
       navigate("/");
     }
   };
+
+  // Aktif section ise opacity 1, değilse 0.5; renk beyaz her durumda
+  const getIconStyles = (section) => ({
+    cursor: "pointer",
+    opacity: activeSection === section ? 1 : 0.5,
+    color: "white",
+    _hover: { opacity: 1 },
+  });
 
   return (
     <Box
@@ -55,34 +60,26 @@ const NavbarComponent = ({ scrollToSection }) => {
       border="1px solid rgba(255,255,255,0.2)"
     >
       <HStack spacing={6}>
-        <Box
-          onClick={handleHomeClick}
-          cursor="pointer"
-          opacity={0.5}
-          _hover={{ opacity: 1 }}
-        >
-          <Icon as={FiHome} boxSize={5} color="white" />
+        <Box {...getIconStyles("about-section")} onClick={handleHomeClick}>
+          <Icon as={FiHome} boxSize={5} />
         </Box>
         <Box
+          {...getIconStyles("education-section")}
           onClick={() => handleScrollOrNavigate("education-section")}
-          cursor="pointer"
-          opacity={0.5}
-          _hover={{ opacity: 1 }}
         >
-          <Icon as={FaUniversity} boxSize={5} color="white" />
+          <Icon as={FaUniversity} boxSize={5} />
         </Box>
         <Box
+          {...getIconStyles("projects-section")}
           onClick={() => handleScrollOrNavigate("projects-section")}
-          cursor="pointer"
-          opacity={0.5}
-          _hover={{ opacity: 1 }}
         >
-          <Icon as={FiFolder} boxSize={5} color="white" />
+          <Icon as={FiFolder} boxSize={5} />
         </Box>
-        <Box cursor="pointer" opacity={0.5} _hover={{ opacity: 1 }}>
-          <Link to="/contact">
-            <Icon as={MdOutlineContactMail} boxSize={5} color="white" />
-          </Link>
+        <Box
+          {...getIconStyles("contact-section")}
+          onClick={() => handleScrollOrNavigate("contact-section")}
+        >
+          <Icon as={MdOutlineContactMail} boxSize={5} />
         </Box>
 
         <LanguageSwitch />
