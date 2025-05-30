@@ -66,6 +66,7 @@ const HomePage = () => {
         bg="transparent"
         px={{ base: 4, md: 12 }}
         py={{ base: 8, md: 12 }}
+        mt={{ base: 8, md: 20 }}  // Burada ekledik
         color="white"
         overflowY="visible"
         id="education-section"
@@ -80,6 +81,7 @@ const HomePage = () => {
         bg="transparent"
         px={{ base: 4, md: 12 }}
         py={{ base: 8, md: 12 }}
+        mt={{ base: 8, md: 20 }}  // Burada ekledik
         color="white"
         id="projects-section"
       >
@@ -93,11 +95,11 @@ const HomePage = () => {
       {/* Section 4: İletişim */}
       <Box
         height={{ base: 'none', md: '100vh' }}
-
         bg="transparent"
         color="white"
         px={{ base: 4, md: 12 }}
         py={{ base: 8, md: 12 }}
+        mt={{ base: 8, md: 20 }}  // Burada ekledik
         id="contact-section"
       >
         <ContactForm />

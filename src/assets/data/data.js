@@ -38,6 +38,18 @@ const data = {
         ],
       },
       {
+        title: "Deal-Eye",
+        description:
+        "Deal-Eye, marketfiyati fiyat verilerini Selenium ile toplayan, makine öğrenimi modelleriyle (XGBoost, regresyon, zaman serisi) günlük ve haftalık tahminler yapan, verileri MongoDB’de saklayıp MERN stack (MongoDB, Express, React, Node.js) ile kullanıcıya modern bir arayüzde sunan entegre bir piyasa analiz ve öngörü sistemidir.",
+        link: "https://github.com/Berkayilmz/Deal-Eye",
+        images: [
+          "/assets/AppPng/dealeyePNG/Deal-Eye.jpeg",
+          "/assets/AppPng/dealeyePNG/1.jpeg",
+          "/assets/AppPng/dealeyePNG/2.jpeg",
+          "/assets/AppPng/dealeyePNG/3.jpeg",
+        ],
+      },
+      {
         title: "RentCar.NET",
         description:
         ".NetBackendProject, ASP.NET Core Web API (.NET 6) ile geliştirilmiş, katmanlı mimariye sahip bir backend altyapı projesidir. Temiz kod, sürdürülebilirlik ve genişletilebilirlik ön plandadır. Öğrenme, geliştirme veya hızlı başlangıç (boilerplate) için idealdir. Controller, Service, Repository, DTO katmanlarına sahiptir; veritabanı işlemleri Entity Framework Core ile yapılır. Swagger UI ile REST API testleri kolaydır. JWT, AutoMapper ve Serilog ile genişletilebilir.",
@@ -117,6 +129,18 @@ const data = {
           "/assets/AppPng/secretumPNG/5.jpeg",
           "/assets/AppPng/secretumPNG/6.jpeg",
           "/assets/AppPng/secretumPNG/7.jpeg",
+        ],
+      },
+      {
+        title: "Deal-Eye",
+        description:
+        "Deal-Eye is an integrated market analysis and forecasting system that collects price data from marketfiyati using Selenium, performs daily and weekly predictions with machine learning models (XGBoost, regression, time series), stores the data in MongoDB, and delivers a modern user interface built with the MERN stack (MongoDB, Express, React, Node.js).",
+        link: "https://github.com/Berkayilmz/Deal-Eye",
+        images: [
+          "/assets/AppPng/dealeyePNG/Deal-Eye.jpeg",
+          "/assets/AppPng/dealeyePNG/1.jpeg",
+          "/assets/AppPng/dealeyePNG/2.jpeg",
+          "/assets/AppPng/dealeyePNG/3.jpeg",
         ],
       },
       {

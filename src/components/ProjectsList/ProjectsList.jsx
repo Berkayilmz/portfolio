@@ -28,15 +28,22 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [zoomed, setZoomed] = useState(false);
 
-  // Sayfalama için durum
+  // Fullscreen foto popup state
+  const [fullscreenImage, setFullscreenImage] = useState(null);
+
+  // Sayfalama durumu
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = isMobile ? 2 : 2; // Mobilde 2 başlık+fotoğraf gösterelim
+  const itemsPerPage = isMobile ? 2 : 2; // Her zaman 2 gösteriliyor, istersen mobilde 1 yapabilirsin
   const totalPages = Math.ceil(projectsData.length / itemsPerPage);
 
   const closeModal = () => {
     setSelectedProject(null);
     setCurrentImageIndex(0);
     setZoomed(false);
+  };
+
+  const closeFullscreen = () => {
+    setFullscreenImage(null);
   };
 
   const prevImage = () => {
@@ -60,7 +67,7 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
     setCurrentPage(page);
   };
 
-  // Sayfaya göre projeleri böl
+  // Gösterilecek projeleri sayfaya göre böl
   const displayedProjects = projectsData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -79,114 +86,63 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
         {title}
       </Heading>
 
-      {/* Mobilde sadece başlık ve fotoğraf göster */}
-      {isMobile ? (
-        <SimpleGrid columns={2} gap={6} maxWidth="1200px" mx="auto">
-          {displayedProjects.map(({ title, link }, idx) => (
-            <Box
-              key={idx}
-              bg="blackAlpha.600"
-              p={3}
-              borderRadius="md"
-              boxShadow="md"
-              _hover={{ bg: "blackAlpha.800", cursor: "pointer" }}
-              display="flex"
-              flexDirection="column"
-              alignItems="center"
+      {/* Proje kartları */}
+      <SimpleGrid columns={isMobile ? 2 : 2} gap={6} maxWidth="1200px" mx="auto">
+        {displayedProjects.map(({ title, description, link }, idx) => (
+          <Box
+            key={idx}
+            bg="blackAlpha.600"
+            p={isMobile ? 3 : 5}
+            borderRadius="md"
+            boxShadow="md"
+            _hover={{ bg: "blackAlpha.800", cursor: "pointer" }}
+            display="flex"
+            flexDirection="column"
+            minHeight={isMobile ? "auto" : "380px"}
+            onClick={() => setSelectedProject(displayedProjects[idx])}
+          >
+            <Heading
+              fontSize={isMobile ? "md" : "lg"}
+              fontWeight="bold"
+              mb={4}
               textAlign="center"
-              onClick={() => setSelectedProject(displayedProjects[idx])}
+              width="100%"
             >
-              <Heading fontSize="md" fontWeight="bold" mb={3} width="100%">
-                {title}
-              </Heading>
+              {title}
+            </Heading>
+
+            <SimpleGrid
+              templateColumns={isMobile ? "1fr" : "180px 1fr"}
+              gap={6}
+              flex="1"
+              mb={4}
+              alignItems="center"
+            >
               <Box
                 borderRadius="md"
                 overflow="hidden"
                 bg="gray.700"
-                maxHeight="270px"
-                maxWidth="100%"
+                width={isMobile ? "100%" : "150px"}
+                height={isMobile ? "auto" : "320px"}
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
                 mx="auto"
-                borderWidth={2}
-                borderColor="#c96216"
-                mb={3}
-                width="100%"
+                borderWidth={3}
+                borderColor="cyan.400"
               >
                 <PhoneWithApp title={title} />
               </Box>
-              <Link
-                href={link}
-                isExternal
-                color="cyan.400"
-                fontWeight="semibold"
-                fontSize="12px"
-                width="100%"
-                textAlign="center"
-              >
-                {viewOnGitHub}
-              </Link>
-            </Box>
-          ))}
-        </SimpleGrid>
-      ) : (
-        // Web görünümü orijinal gibi kalıyor
-        <SimpleGrid columns={2} gap={6} maxWidth="1200px" mx="auto">
-          {displayedProjects.map(({ title, description, link }, idx) => (
-            <Box
-              key={idx}
-              bg="blackAlpha.600"
-              p={5}
-              borderRadius="md"
-              boxShadow="md"
-              _hover={{ bg: "blackAlpha.800", cursor: "pointer" }}
-              display="flex"
-              flexDirection="column"
-              height="50vh"
-              onClick={() => setSelectedProject(displayedProjects[idx])}
-            >
-              <Heading
-                fontSize="lg"
-                fontWeight="bold"
-                mb={4}
-                textAlign="center"
-                width="100%"
-              >
-                {title}
-              </Heading>
 
-              <SimpleGrid
-                templateColumns="1fr 2fr"
-                gap={6}
-                flex="1"
-                mb={4}
-                alignItems="center"
-              >
-                <Box
-                  borderRadius="md"
-                  overflow="hidden"
-                  bg="gray.700"
-                  maxHeight="384px"
-                  maxWidth="180px"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  mx="auto"
-                  ml={2}
-                  borderWidth={3}
-                  borderColor="cyan.400"
-                >
-                  <PhoneWithApp title={title} />
-                </Box>
-
-                <Flex direction="column" justifyContent="center" ml={4} height="100%">
+              {!isMobile && (
+                <Flex direction="column" justifyContent="center" height="100%">
                   <Text
                     color="gray.300"
                     lineHeight="tall"
                     noOfLines={8}
                     overflow="hidden"
                     mb={4}
+                    fontSize={14}
                   >
                     {description}
                   </Text>
@@ -196,18 +152,18 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
                     </Link>
                   </Box>
                 </Flex>
-              </SimpleGrid>
-            </Box>
-          ))}
-        </SimpleGrid>
-      )}
+              )}
+            </SimpleGrid>
+          </Box>
+        ))}
+      </SimpleGrid>
 
       {/* Sayfalama Butonları */}
       <Flex justifyContent="center" mt={8} gap={4} flexWrap="wrap">
         <Button
           onClick={() => changePage(currentPage - 1)}
           isDisabled={currentPage === 1}
-          backgroundColor='cyan.400'
+          backgroundColor="cyan.400"
         >
           Önceki
         </Button>
@@ -216,6 +172,7 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
             key={i}
             onClick={() => changePage(i + 1)}
             variant={currentPage === i + 1 ? "solid" : "outline"}
+            colorScheme="cyan"
           >
             {i + 1}
           </Button>
@@ -223,7 +180,7 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
         <Button
           onClick={() => changePage(currentPage + 1)}
           isDisabled={currentPage === totalPages}
-          backgroundColor='cyan.400'
+          backgroundColor="cyan.400"
         >
           Sonraki
         </Button>
@@ -249,7 +206,7 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
               p={6}
               borderRadius="md"
               maxW="550px"
-              maxH="100vh"
+              maxH="90vh"
               overflowY="auto"
               color="white"
               boxShadow="lg"
@@ -267,7 +224,7 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
 
               {/* Slider */}
               {selectedProject.images && selectedProject.images.length > 0 && (
-                <Flex alignItems="center" mb={6} position="relative">
+                <Flex alignItems="center" mb={6} position="relative" overflow="hidden">
                   <Button
                     onClick={prevImage}
                     position="absolute"
@@ -285,18 +242,25 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
                     flex="1"
                     textAlign="center"
                     mx={10}
-                    onClick={() => setZoomed(!zoomed)}
-                    cursor={zoomed ? "zoom-out" : "zoom-in"}
+                    onClick={() => setFullscreenImage(selectedProject.images[currentImageIndex])}
+                    cursor="zoom-in"
+                    maxWidth="100%"
+                    maxHeight="80vh"
+                    overflow="hidden"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
                   >
                     <Image
                       src={selectedProject.images[currentImageIndex]}
                       alt={`Image ${currentImageIndex + 1}`}
-                      maxH={zoomed ? "60vh" : "400px"}
+                      maxHeight={zoomed ? "60vh" : "400px"}
                       borderRadius="md"
                       mx="auto"
                       my="10"
                       transition="transform 0.3s ease"
                       transform={zoomed ? "scale(1.1)" : "scale(1)"}
+                      objectFit="contain"
                     />
                   </Box>
                   <Button
@@ -333,6 +297,39 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
                 </>
               )}
             </Box>
+          </Box>
+        </Portal>
+      )}
+
+      {/* Fullscreen Fotoğraf Popup */}
+      {fullscreenImage && (
+        <Portal>
+          <Box
+            position="fixed"
+            inset={0}
+            bg="rgba(0, 0, 0, 0.9)"
+            zIndex={1600}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <CloseButton
+              position="absolute"
+              top={4}
+              right={4}
+              onClick={() => setFullscreenImage(null)}
+              color="white"
+              zIndex={1700}
+            />
+            <Image
+              src={fullscreenImage}
+              alt="Fullscreen"
+              maxH="90vh"
+              maxW="90vw"
+              objectFit="contain"
+              cursor="zoom-out"
+              onClick={() => setFullscreenImage(null)}
+            />
           </Box>
         </Portal>
       )}
