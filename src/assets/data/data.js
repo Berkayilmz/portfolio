@@ -1,8 +1,3 @@
-import projectImage from '../phone.png'; // assets içindeki resim yolu
-
-
-
-
 const data = {
   tr: {
     projectsData: [
