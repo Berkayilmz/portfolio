@@ -1,5 +1,5 @@
 import React from "react";
-import { VStack, Heading, Text, Box, Accordion, Flex, Spacer } from "@chakra-ui/react";
+import { VStack, Heading, Text, Box, Accordion, Flex } from "@chakra-ui/react";
 import { IoIosArrowDown } from "react-icons/io";
 
 const AboutMe = ({ title, texts }) => {

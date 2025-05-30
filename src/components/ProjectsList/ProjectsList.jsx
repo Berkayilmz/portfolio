@@ -14,13 +14,7 @@ import {
 } from "@chakra-ui/react";
 import PhoneWithApp from "../Phone/PhoneWithApp";
 
-const chunkArray = (arr, size) => {
-  const chunked = [];
-  for (let i = 0; i < arr.length; i += size) {
-    chunked.push(arr.slice(i, i + size));
-  }
-  return chunked;
-};
+
 
 const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
   const isMobile = useBreakpointValue({ base: true, md: false });
@@ -42,9 +36,7 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
     setZoomed(false);
   };
 
-  const closeFullscreen = () => {
-    setFullscreenImage(null);
-  };
+
 
   const prevImage = () => {
     if (!selectedProject || !selectedProject.images) return;

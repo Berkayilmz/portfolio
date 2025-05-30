@@ -3,7 +3,7 @@ import { FiHome, FiFolder } from "react-icons/fi";
 import { MdOutlineContactMail } from "react-icons/md";
 import { FaUniversity } from "react-icons/fa";
 import LanguageSwitch from "../Switch/LanguageSwitch";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
 const NavbarComponent = ({ scrollToSection, activeSection }) => {

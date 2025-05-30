@@ -2,7 +2,6 @@ import React from "react";
 import {
   Box,
   Grid,
-  useBreakpointValue,
 } from "@chakra-ui/react";
 import { useLanguage } from "../context/LanguageContext"; // Dil context hook
 import ProfileCard from "../components/ProfileCard/ProfileCard";
