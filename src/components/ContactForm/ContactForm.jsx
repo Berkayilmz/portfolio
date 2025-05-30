@@ -101,7 +101,7 @@ const ContactForm = () => {
           {/* Gizli alan: formsubmit için captcha devre dışı */}
           <input type="hidden" name="_captcha" value="false" />
           {/* Başarılı gönderim sonrası yönlendirme (opsiyonel) */}
-          <input type="hidden" name="_next" value="http://localhost:3000" />
+          <input type="hidden" name="_next" value="https://berkay-yilmaz.netlify.app" />
 
           <Button type="submit" colorScheme="cyan" width="full">
             Send Message
