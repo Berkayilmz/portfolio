@@ -1,6 +1,7 @@
 import { HStack, Box, Icon } from "@chakra-ui/react";
 import { FiHome, FiFolder } from "react-icons/fi";
 import { MdOutlineContactMail } from "react-icons/md";
+import { TbFileCv } from "react-icons/tb";
 import { FaUniversity } from "react-icons/fa";
 import LanguageSwitch from "../Switch/LanguageSwitch";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -80,6 +81,15 @@ const NavbarComponent = ({ scrollToSection, activeSection }) => {
           onClick={() => handleScrollOrNavigate("contact-section")}
         >
           <Icon as={MdOutlineContactMail} boxSize={5} />
+        </Box>
+        <Box
+          as="a"
+          href="/assets/cv.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          {...getIconStyles("contact-section")}
+        >
+          <Icon as={TbFileCv} boxSize={5} />
         </Box>
 
         <LanguageSwitch />

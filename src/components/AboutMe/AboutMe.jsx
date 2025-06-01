@@ -63,6 +63,18 @@ const AboutMe = ({ title, texts }) => {
           </Text>
         ))}
       </Box>
+      <Text
+        mt={4}
+        as="a"
+        href="/assets/cv.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        color="cyan.400"
+        fontWeight="semibold"
+        _hover={{ textDecoration: "underline" }}
+      >
+        CV’mi görmek için tıklayın
+      </Text>
     </VStack>
   );
 };

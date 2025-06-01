@@ -120,8 +120,8 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
                 alignItems="center"
                 justifyContent="center"
                 mx="auto"
-                borderWidth={3}
-                borderColor="cyan.400"
+                borderWidth={{ base: 2, md: 3 }}
+                borderColor={{ base: "transparent", md: "cyan.400" }}
               >
                 <PhoneWithApp title={title} />
               </Box>
@@ -151,28 +151,45 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
       </SimpleGrid>
 
       {/* Sayfalama Butonları */}
-      <Flex justifyContent="center" mt={8} gap={4} flexWrap="wrap">
+      <Flex
+        justifyContent="center"
+        mt={8}
+        gap={2}
+        flexWrap={{ base: "nowrap", md: "wrap" }}
+        flexDirection="row"
+        overflowX={{ base: "auto", md: "visible" }}
+        px={2}
+      >
         <Button
           onClick={() => changePage(currentPage - 1)}
           isDisabled={currentPage === 1}
           backgroundColor="cyan.400"
+          minW={{ base: "70px", md: "auto" }}
+          fontSize={{ base: "sm", md: "md" }}
         >
           Önceki
         </Button>
+
         {[...Array(totalPages)].map((_, i) => (
           <Button
             key={i}
             onClick={() => changePage(i + 1)}
             variant={currentPage === i + 1 ? "solid" : "outline"}
             colorScheme="cyan"
+            minW={{ base: "35px", md: "auto" }}
+            fontSize={{ base: "sm", md: "md" }}
+            px={{ base: 2, md: 4 }}
           >
             {i + 1}
           </Button>
         ))}
+
         <Button
           onClick={() => changePage(currentPage + 1)}
           isDisabled={currentPage === totalPages}
           backgroundColor="cyan.400"
+          minW={{ base: "70px", md: "auto" }}
+          fontSize={{ base: "sm", md: "md" }}
         >
           Sonraki
         </Button>
