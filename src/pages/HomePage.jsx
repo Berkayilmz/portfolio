@@ -27,6 +27,7 @@ const HomePage = () => {
     skillsTitle,
     projectsTitle,
     viewOnGitHub,
+    cvText,
   } = data[language];
 
   return (
@@ -55,7 +56,7 @@ const HomePage = () => {
           alignItems="center"
         >
           <ProfileCard cardContent={cardContent} />
-          <AboutMe title={aboutTitle} texts={aboutTexts} />
+          <AboutMe title={aboutTitle} texts={aboutTexts} cvText={cvText}/>
         </Grid>
       </Box>
 

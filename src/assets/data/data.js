@@ -92,6 +92,7 @@ const data = {
     skillsTitle: "Yetenekler",
     projectsTitle: "Projelerim",
     viewOnGitHub: "GitHub'da Görüntüle",
+    cvText: "CV’mi görüntülemek için tıklayın",
   },
   en: {
     projectsData: [
@@ -186,6 +187,7 @@ const data = {
     skillsTitle: "Skills",
     projectsTitle: "Projects",
     viewOnGitHub: "View on GitHub",
+    cvText: "Click here to view my CV",
   },
 };
 

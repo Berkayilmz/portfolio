@@ -2,7 +2,7 @@ import React from "react";
 import { VStack, Heading, Text, Box, Accordion, Flex } from "@chakra-ui/react";
 import { IoIosArrowDown } from "react-icons/io";
 
-const AboutMe = ({ title, texts }) => {
+const AboutMe = ({ title, texts, cvText }) => {
 
   const items = [
     {
@@ -73,7 +73,7 @@ const AboutMe = ({ title, texts }) => {
         fontWeight="semibold"
         _hover={{ textDecoration: "underline" }}
       >
-        CV’mi görmek için tıklayın
+        {cvText}
       </Text>
     </VStack>
   );
