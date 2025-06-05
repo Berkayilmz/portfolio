@@ -93,6 +93,15 @@ const data = {
     projectsTitle: "Projelerim",
     viewOnGitHub: "GitHub'da Görüntüle",
     cvText: "CV’mi görüntülemek için tıklayın",
+
+    contactTitle: "İletişim",
+    contactNameLabel: "İsim",
+    contactNamePlaceholder: "Adınız",
+    contactEmailLabel: "E-posta",
+    contactEmailPlaceholder: "ornek@eposta.com",
+    contactMessageLabel: "Mesaj",
+    contactMessagePlaceholder: "Mesajınızı buraya yazın...",
+    contactSendButton: "Mesaj Gönder",
   },
   en: {
     projectsData: [
@@ -188,6 +197,15 @@ const data = {
     projectsTitle: "Projects",
     viewOnGitHub: "View on GitHub",
     cvText: "Click here to view my CV",
+
+    contactTitle: "Contact Me",
+    contactNameLabel: "Name",
+    contactNamePlaceholder: "Your Name",
+    contactEmailLabel: "Email",
+    contactEmailPlaceholder: "you@example.com",
+    contactMessageLabel: "Message",
+    contactMessagePlaceholder: "Write your message here...",
+    contactSendButton: "Send Message",
   },
 };
 

@@ -55,13 +55,14 @@ const SkillsList = ({ title, skillsData }) => {
         {skillsData.map(({ label, value }, idx) => (
           <MotionHStack
             key={idx}
-            width={{ base: "" }}
             justifyContent="space-between"
             p={2}
             borderRadius="md"
             borderWidth={1}
             bg="blackAlpha.600"
             variants={itemVariants}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.1, ease: "easeInOut" }}
           >
             <Text
               fontWeight="bold"

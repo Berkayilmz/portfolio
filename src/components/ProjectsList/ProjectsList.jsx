@@ -93,7 +93,7 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, delay: idx * 0.15 }}
+            transition={{ duration: 0.2, delay: idx * 0.15 }}
             whileHover={{ scale: 1.05 }}
             cursor="pointer"
           >

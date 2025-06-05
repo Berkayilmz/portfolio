@@ -12,6 +12,8 @@ import ProjectsList from "../components/ProjectsList/ProjectsList";
 import ContactForm from "../components/ContactForm/ContactForm";  // ContactForm importu
 
 import data from "../assets/data/data";
+import ContactInfo from "../components/ContactInfo/ContactInfo";
+import Footer from "../components/Footer/Footer";
 
 const HomePage = () => {
   const { language } = useLanguage();
@@ -56,7 +58,7 @@ const HomePage = () => {
           alignItems="center"
         >
           <ProfileCard cardContent={cardContent} />
-          <AboutMe title={aboutTitle} texts={aboutTexts} cvText={cvText}/>
+          <AboutMe title={aboutTitle} texts={aboutTexts} cvText={cvText} />
         </Grid>
       </Box>
 
@@ -99,10 +101,23 @@ const HomePage = () => {
         color="white"
         px={{ base: 4, md: 12 }}
         py={{ base: 8, md: 12 }}
-        mt={{ base: 8, md: 20 }}  // Burada ekledik
+        mt={{ base: 8, md: 10 }}  // Burada ekledik
         id="contact-section"
       >
         <ContactForm />
+        <ContactInfo />
+      </Box>
+
+      <Box
+        height={{ base: 'none', md: '10vh' }}
+        bg="transparent"
+        color="white"
+        px={{ base: 4, md: 12 }}
+        py={{ base: 8, md: 12 }}
+        mt={{ base: 8, md: 10 }}
+        id="contact-section"
+      >
+        <Footer />
       </Box>
     </Box>
   );
