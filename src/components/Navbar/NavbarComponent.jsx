@@ -87,7 +87,7 @@ const NavbarComponent = ({ scrollToSection, activeSection }) => {
           href="/assets/cv.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          {...getIconStyles("contact-section")}
+          {...getIconStyles("cv-section")}
         >
           <Icon as={TbFileCv} boxSize={5} />
         </Box>

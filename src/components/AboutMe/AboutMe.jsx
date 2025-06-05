@@ -1,9 +1,27 @@
 import React from "react";
 import { VStack, Heading, Text, Box, Accordion, Flex } from "@chakra-ui/react";
 import { IoIosArrowDown } from "react-icons/io";
+import { motion } from "framer-motion";
+
+const MotionBox = motion(Box);
+const MotionHeading = motion(Heading);
+const MotionText = motion(Text);
+
+const containerVariants = {
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+  hidden: {},
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -30 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.4 } },
+};
 
 const AboutMe = ({ title, texts, cvText }) => {
-
   const items = [
     {
       value: "about",
@@ -24,7 +42,7 @@ const AboutMe = ({ title, texts, cvText }) => {
 
   return (
     <VStack spacing={6} maxW="700px" alignItems="flex-start" color="white" textAlign="left">
-
+      
       {/* Mobilde accordion */}
       <Box display={{ base: 'block', md: 'none' }}>
         <Accordion.Root collapsible>
@@ -35,7 +53,6 @@ const AboutMe = ({ title, texts, cvText }) => {
                   <Box fontWeight="bold" fontSize="2xl" color="white">
                     {title}
                   </Box>
-
                   <IoIosArrowDown size={24} color="white" />
                 </Flex>
               </Accordion.ItemTrigger>
@@ -47,34 +64,42 @@ const AboutMe = ({ title, texts, cvText }) => {
         </Accordion.Root>
       </Box>
 
-      {/* Masaüstü görünümü */}
-      <Box display={{ base: 'none', md: 'block' }}>
-        <Heading size="2xl" fontWeight="extrabold" mb={6}>
+      {/* Masaüstü görünümü animasyonlu */}
+      <MotionBox
+        display={{ base: 'none', md: 'block' }}
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <MotionHeading size="2xl" fontWeight="extrabold" mb={6} variants={itemVariants}>
           {title}
-        </Heading>
+        </MotionHeading>
         {texts.map((text, idx) => (
-          <Text
+          <MotionText
             key={idx}
             fontSize={idx === 0 ? "lg" : "md"}
             color={idx === 0 ? "gray.300" : "gray.400"}
             lineHeight="tall"
+            variants={itemVariants}
           >
             {text}
-          </Text>
+          </MotionText>
         ))}
-      </Box>
-      <Text
-        mt={4}
-        as="a"
-        href="/assets/cv.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        color="cyan.400"
-        fontWeight="semibold"
-        _hover={{ textDecoration: "underline" }}
-      >
-        {cvText}
-      </Text>
+        <MotionText
+          mt={4}
+          as="a"
+          href="/assets/cv.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          color="cyan.400"
+          fontWeight="semibold"
+          _hover={{ textDecoration: "underline" }}
+          variants={itemVariants}
+          cursor="pointer"
+        >
+          {cvText}
+        </MotionText>
+      </MotionBox>
     </VStack>
   );
 };

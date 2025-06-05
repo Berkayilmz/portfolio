@@ -12,9 +12,18 @@ import {
   useBreakpointValue,
   CloseButton,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import PhoneWithApp from "../Phone/PhoneWithApp";
 
+const chunkArray = (arr, size) => {
+  const chunked = [];
+  for (let i = 0; i < arr.length; i += size) {
+    chunked.push(arr.slice(i, i + size));
+  }
+  return chunked;
+};
 
+const MotionBox = motion(Box);
 
 const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
   const isMobile = useBreakpointValue({ base: true, md: false });
@@ -27,7 +36,7 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
 
   // Sayfalama durumu
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = isMobile ? 2 : 2; // Her zaman 2 gösteriliyor, istersen mobilde 1 yapabilirsin
+  const itemsPerPage = isMobile ? 2 : 2;
   const totalPages = Math.ceil(projectsData.length / itemsPerPage);
 
   const closeModal = () => {
@@ -35,8 +44,6 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
     setCurrentImageIndex(0);
     setZoomed(false);
   };
-
-
 
   const prevImage = () => {
     if (!selectedProject || !selectedProject.images) return;
@@ -78,20 +85,24 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
         {title}
       </Heading>
 
-      {/* Proje kartları */}
       <SimpleGrid columns={isMobile ? 2 : 2} gap={6} maxWidth="1200px" mx="auto">
         {displayedProjects.map(({ title, description, link }, idx) => (
-          <Box
+          <MotionBox
             key={idx}
             bg="blackAlpha.600"
             p={isMobile ? 3 : 5}
             borderRadius="md"
             boxShadow="md"
-            _hover={{ bg: "blackAlpha.800", cursor: "pointer" }}
             display="flex"
             flexDirection="column"
             minHeight={isMobile ? "auto" : "380px"}
             onClick={() => setSelectedProject(displayedProjects[idx])}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: idx * 0.15 }}
+            whileHover={{ scale: 1.05 }}
+            cursor="pointer"
           >
             <Heading
               fontSize={isMobile ? "md" : "lg"}
@@ -146,11 +157,11 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
                 </Flex>
               )}
             </SimpleGrid>
-          </Box>
+          </MotionBox>
         ))}
       </SimpleGrid>
 
-      {/* Sayfalama Butonları */}
+      {/* Pagination buttons */}
       <Flex
         justifyContent="center"
         mt={8}
@@ -195,7 +206,7 @@ const ProjectsList = ({ title, projectsData, viewOnGitHub }) => {
         </Button>
       </Flex>
 
-      {/* Modal */}
+      {/* Modal ve fullscreen popup aynı kaldı */}
       {selectedProject && (
         <Portal>
           <Box
