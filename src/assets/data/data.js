@@ -17,6 +17,18 @@ const data = {
         ],
       },
       {
+        title: "İSTFED",
+        description:
+        "ASP.NET WebForms ile geliştirilen federasyon sitesi, dernekleri tek çatı altında buluşturan bir platformdur. Proje; kullanıcıya açık arayüz, farklı master page yapısına sahip yönetim paneli ve MySQL veritabanı işlemlerini üstlenen bağımsız Class Library’den oluşmaktadır. Haber, duyuru ve etkinlik paylaşımları ile üye kuruluş yönetimi merkezi olarak yapılmaktadır.",
+        link: "https://istfed.com",
+        images: [
+          "/assets/AppPng/istfedPNG/1.jpeg",
+          "/assets/AppPng/istfedPNG/2.jpeg",
+          "/assets/AppPng/istfedPNG/3.jpeg",
+          "/assets/AppPng/istfedPNG/4.jpeg",
+        ],
+      },
+      {
         title: "Secretum",
         description:
         "React Native (Expo) ile geliştirilen, Firebase Auth & Firestore altyapısını kullanan mobil günlük uygulaması. Kullanıcılar günlüklerine başlık, içerik, emoji ve görsel ekleyebilir. AES algoritması ile cihazda yerel olarak şifreleme uygulanır; bu sayede uygulama sahibi dahi kullanıcı içeriklerini okuyamaz. Takvim görünümü, gizli günlük gösterimi ve kullanıcı istatistikleri gibi özellikler sunar.",
@@ -118,6 +130,18 @@ const data = {
           "/assets/AppPng/weatherwayPNG/4.jpeg",
           "/assets/AppPng/weatherwayPNG/5.jpeg",
           "/assets/AppPng/weatherwayPNG/6.jpeg",
+        ],
+      },
+      {
+        title: "İSTFED",
+        description:
+        "The federation website, developed with ASP.NET WebForms, is a platform that brings associations together under one roof. The project consists of a public-facing user interface, an administration panel with a separate master page structure, and an independent Class Library that handles MySQL database operations. News, announcements, events, and member organizations are centrally managed within the system.",
+        link: "https://istfed.com",
+        images: [
+          "/assets/AppPng/istfedPNG/1.jpeg",
+          "/assets/AppPng/istfedPNG/2.jpeg",
+          "/assets/AppPng/istfedPNG/3.jpeg",
+          "/assets/AppPng/istfedPNG/4.jpeg",
         ],
       },
       {
